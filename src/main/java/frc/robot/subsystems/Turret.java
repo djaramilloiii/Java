@@ -8,7 +8,8 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+//import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.Utilities;
@@ -18,14 +19,14 @@ import frc.robot.commands.TurretControl;
 public class Turret extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final VictorSPX turretMotor1 = new VictorSPX(RobotMap.MOTORS.TURRET_MOTOR_1.ordinal());
+  private final TalonFX turretMotor1 = new TalonFX(RobotMap.MOTORS.TURRET_MOTOR_1.ordinal());
   
 
   public Turret() {
 
   }
 
-  public VictorSPX getTurretMotor1() {
+  public TalonFX getTurretMotor1() {
     return turretMotor1;
   }
 

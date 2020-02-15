@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class GrabRun extends Command {
 
-  public GrabRun(Object setInverted) {
+  public GrabRun() {
   
     super.requires(Robot.grabber);
 

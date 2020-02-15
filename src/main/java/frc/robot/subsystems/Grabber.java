@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.InvertType;
+//import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,13 +20,10 @@ public class Grabber extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private final VictorSPX grabMotor1 = new VictorSPX(RobotMap.MOTORS.GRAB_MOTOR_1.ordinal());
-  InvertType invert;
   
 
   public Grabber() {
 
-    
-    
 
   }
 
@@ -41,7 +38,8 @@ public class Grabber extends Subsystem {
     
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    super.setDefaultCommand(new GrabRun(grabMotor1.setInverted(invert)));
+    //super.setDefaultCommand(new GrabRun(grabMotor1.setInverted(invert)));
+    super.setDefaultCommand(new GrabRun());
   }
 
   public void setGrabMotor1(double motorSetting) {
@@ -49,5 +47,5 @@ public class Grabber extends Subsystem {
     this.grabMotor1.set(ControlMode.PercentOutput, motorSetting); //
   }
 
-  
+
 }
