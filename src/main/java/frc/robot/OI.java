@@ -96,7 +96,7 @@ public class OI {
 
 		//this.oButtonA.whenPressed(new SetElevator(RobotMap.ELEVATOR_LOW));
 		this.oButtonA.whileHeld(new UnloadBall()); 
-		this.oButtonX.whileHeld(new LoadBall()); 
+		this.oButtonX.whenPressed(new LoadBall()); 
 		this.oButtonY.whileHeld(new GrabRun()); 
 		//this.oButtonB.whileHeld(new GrabRun(false));
 		//this.oButtonStart.whenPressed(new TurnToAngle(-45));
