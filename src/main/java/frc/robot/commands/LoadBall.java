@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-//import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class LoadBall extends Command {
@@ -22,15 +22,23 @@ public class LoadBall extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    final Timer m_timer = new Timer();
+    m_timer.reset();
+    m_timer.start();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
+    final Timer m_timer = new Timer();
+    if (m_timer.get() < 1.5) {
       Robot.elevator.setLiftMotor1(RobotMap.MAX_SPEED_LIFT1);
       Robot.elevator.setLiftMotor2(-RobotMap.MAX_SPEED_LIFT2);
+  } else {
+    Robot.elevator.setLiftMotor1(0);
+    Robot.elevator.setLiftMotor2(0);
   }
+}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override

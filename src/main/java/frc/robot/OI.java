@@ -95,8 +95,8 @@ public class OI {
 		this.operatorController.setRumble(RumbleType.kLeftRumble, 0);
 
 		//this.oButtonA.whenPressed(new SetElevator(RobotMap.ELEVATOR_LOW));
-		this.oButtonA.whileHeld(new LoadBall()); 
-		this.oButtonX.whileHeld(new UnloadBall()); 
+		this.oButtonA.whileHeld(new UnloadBall()); 
+		this.oButtonX.whileHeld(new LoadBall()); 
 		this.oButtonY.whileHeld(new GrabRun()); 
 		//this.oButtonB.whileHeld(new GrabRun(false));
 		//this.oButtonStart.whenPressed(new TurnToAngle(-45));

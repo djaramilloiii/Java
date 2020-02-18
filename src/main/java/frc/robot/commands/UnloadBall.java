@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-//import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class UnloadBall extends Command {
@@ -28,8 +27,10 @@ public class UnloadBall extends Command {
   @Override
   protected void execute() {
     
+    
       Robot.elevator.setLiftMotor1(-RobotMap.MAX_SPEED_LIFT1);
       Robot.elevator.setLiftMotor2(RobotMap.MAX_SPEED_LIFT2);
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
