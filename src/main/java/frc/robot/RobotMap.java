@@ -63,11 +63,7 @@ public class RobotMap {
     ELEV_LIFT_2, //VivtorSPX CAN ID 6
     SHOOT_MOTOR_1, //VictorSPX CAN ID 7
     GRAB_MOTOR_1, //VictorSPX CAN ID 8
-    TURRET_MOTOR_1,;
-
-	public int getPosition() {
-		return 0;
-	} //CANSparkMax CAN ID 9
+    TURRET_MOTOR_1,; //CANSparkMax CAN ID 9
     
 
   }
