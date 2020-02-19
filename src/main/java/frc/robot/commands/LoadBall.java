@@ -37,6 +37,7 @@ public class LoadBall extends Command {
   } else {
     Robot.elevator.setLiftMotor1(0);
     Robot.elevator.setLiftMotor2(0);
+    m_timer.stop();
   }
 }
 
