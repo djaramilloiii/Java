@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 
-public class autoDrive extends Command {
-  public autoDrive() {
+public class AutoDrive extends Command {
+  public AutoDrive() {
     super.requires(Robot.driveTrain);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
