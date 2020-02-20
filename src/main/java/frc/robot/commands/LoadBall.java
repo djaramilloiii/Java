@@ -32,8 +32,9 @@ public class LoadBall extends Command {
   protected void execute() {
     final Timer m_timer = new Timer();
     if (m_timer.get() < 1.5) {
-      Robot.elevator.setLiftMotor1(RobotMap.MAX_SPEED_LIFT1);
-      Robot.elevator.setLiftMotor2(-RobotMap.MAX_SPEED_LIFT2);
+      Robot.elevator.setLiftMotor1(-RobotMap.MAX_SPEED_LIFT1);
+      Robot.elevator.setLiftMotor2(+RobotMap.MAX_SPEED_LIFT2);
+      Timer.delay(.005);
   } else {
     Robot.elevator.setLiftMotor1(0);
     Robot.elevator.setLiftMotor2(0);

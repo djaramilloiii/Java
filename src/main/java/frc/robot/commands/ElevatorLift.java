@@ -28,8 +28,8 @@ public class ElevatorLift extends Command {
   protected void execute() {
     double rightStick = Robot.m_oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y);
     
-      Robot.elevator.setLiftMotor1(-rightStick);
-      Robot.elevator.setLiftMotor2(+rightStick);
+      Robot.elevator.setLiftMotor1(+rightStick);
+      Robot.elevator.setLiftMotor2(-rightStick);
   }
 
   // Make this return true when this Command no longer needs to run execute()

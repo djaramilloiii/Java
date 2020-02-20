@@ -28,8 +28,8 @@ public class UnloadBall extends Command {
   protected void execute() {
     
     
-      Robot.elevator.setLiftMotor1(-RobotMap.MAX_SPEED_LIFT1);
-      Robot.elevator.setLiftMotor2(RobotMap.MAX_SPEED_LIFT2);
+      Robot.elevator.setLiftMotor1(+RobotMap.MAX_SPEED_LIFT1);
+      Robot.elevator.setLiftMotor2(-RobotMap.MAX_SPEED_LIFT2);
     
   }
 
