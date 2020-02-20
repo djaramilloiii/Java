@@ -73,7 +73,7 @@ public class RobotMap {
   public static final double MAX_SPEED_LIFT2 = .35; //0-1 max speed
   public static final double MAX_SPEED_GRAB = .35; //0-1 max speed
   public static final double MAX_SPEED_TURRET = .5; //0-1 max speed
-  public static final double MAX_SPEED_SHOOT = 95; //0-1 max speed
+  public static final double MAX_SPEED_SHOOT = .95; //0-1 max speed
   //public static final double RAMP_RATE = 0; //time in seconds for the motor to reach max speed
   public static final double TURNING_RATE = 0.7;
 }
