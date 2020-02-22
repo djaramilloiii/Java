@@ -13,7 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.Utilities;
-import frc.robot.commands.GrabRun;
+import frc.robot.commands.StopGrabber;
 
 public class Grabber extends Subsystem {
   // Put methods for controlling this subsystem
@@ -37,8 +37,8 @@ public class Grabber extends Subsystem {
     
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    super.setDefaultCommand(new GrabRun());
-    //super.setDefaultCommand(new stopGrabber());
+    //super.setDefaultCommand(new GrabRun());
+    super.setDefaultCommand(new StopGrabber());
   }
 
   public void setGrabMotor1(double motorSetting) {
@@ -46,7 +46,4 @@ public class Grabber extends Subsystem {
     this.grabMotor1.set(ControlMode.PercentOutput, motorSetting); //
   }
 
-  public void stopGrabber(){
-    this.grabMotor1.set(ControlMode.PercentOutput, 0);
-  }
 }

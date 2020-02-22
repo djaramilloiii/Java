@@ -12,9 +12,11 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AutoDrive;
-import frc.robot.commands.GrabRun;
+import frc.robot.commands.GrabIn;
+import frc.robot.commands.GrabOut;
 //import frc.robot.commands.LoadBall;
 import frc.robot.commands.LoadBallTimed;
+//import frc.robot.commands.StopGrabber;
 import frc.robot.commands.UnloadBall;
 
 
@@ -114,9 +116,9 @@ public class OI {
 
 		//this.dButtonA.whenPressed(new GoToStrip());
 		//this.dButtonX.whenPressed(new DriveForward(30));
-		//this.dButtonA.whileHeld(new GrabRun());
+		this.dButtonA.whenPressed(new GrabIn());
 		//this.dButtonX.whenPressed(new SetBackClimber(RobotMap.CLIMBER_GROUND, RobotMap.CLIMBER_GROUND_SLOT));
-		//this.dButtonB.whileHeld(new GrabRun());
+		this.dButtonB.whileHeld(new GrabOut());
 		//this.dButtonY.whenPressed(new AutoDrive());
 		//this.dButtonBack.whenPressed(new ZeroClimber(Dart.FRONT));
 		this.dButtonStart.whenPressed(new AutoDrive());
