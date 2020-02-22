@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.AutoDrive;
 import frc.robot.commands.GrabRun;
 //import frc.robot.commands.LoadBall;
 import frc.robot.commands.LoadBallTimed;
@@ -113,11 +114,11 @@ public class OI {
 
 		//this.dButtonA.whenPressed(new GoToStrip());
 		//this.dButtonX.whenPressed(new DriveForward(30));
-		this.dButtonA.whileHeld(new GrabRun());
+		//this.dButtonA.whileHeld(new GrabRun());
 		//this.dButtonX.whenPressed(new SetBackClimber(RobotMap.CLIMBER_GROUND, RobotMap.CLIMBER_GROUND_SLOT));
-		//this.dButtonB.whenPressed(new SetFrontClimber(RobotMap.CLIMBER_LIFT, RobotMap.CLIMBER_GROUND_SLOT));
-		//this.dButtonY.whenPressed(new SetBackClimber(RobotMap.CLIMBER_LIFT, RobotMap.CLIMBER_GROUND_SLOT));
+		//this.dButtonB.whileHeld(new GrabRun());
+		//this.dButtonY.whenPressed(new AutoDrive());
 		//this.dButtonBack.whenPressed(new ZeroClimber(Dart.FRONT));
-		//this.dButtonBack.whenPressed(new ZeroBothClimbers());
+		this.dButtonStart.whenPressed(new AutoDrive());
 	}
 }

@@ -70,12 +70,13 @@ public class RobotMap {
   }
 
   public static final double MAX_SPEED = 0.95; // 0-1, max speed
+  public static final double MAX_SPEED_ADRIVE = 0.2; // 0-1, max speed
   public static final double MAX_SPEED_LIFT1 = .4; //0-1 max speed
   public static final double MAX_SPEED_LIFT2 = .4; //0-1 max speed
-  public static final double MAX_SPEED_GRAB = .4; //0-1 max speed
+  public static final double MAX_SPEED_GRAB = .6; //0-1 max speed
   public static final double MAX_SPEED_TURRET = .5; //0-1 max speed
   public static final double MAX_SPEED_SHOOT = .95; //0-1 max speed
   public static final double MAX_SPEED_CLIMB = .7; //0-1 max speed
-  //public static final double RAMP_RATE = 0; //time in seconds for the motor to reach max speed
+  public static final double RAMP_RATE = .5; //time in seconds for the motor to reach max speed
   public static final double TURNING_RATE = 0.7;
 }

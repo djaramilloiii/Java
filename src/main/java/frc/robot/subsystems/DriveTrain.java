@@ -56,8 +56,10 @@ public class DriveTrain extends Subsystem {
       this.rightMotor2.follow(this.rightMotor1);
       this.rightMotor2.setInverted(false);
       this.leftMotor2.setInverted(false); 
-
     }
+
+    this.leftMotor1.configOpenloopRamp(RobotMap.RAMP_RATE, 0);
+    this.rightMotor1.configOpenloopRamp(RobotMap.RAMP_RATE, 0);
   }
 
 
@@ -81,10 +83,16 @@ public class DriveTrain extends Subsystem {
     motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED);
     this.rightMotor1.set(ControlMode.PercentOutput, motorSetting); //2 is following 1
 
-    // check current and ensure safe limits
-    //if (this.rightMotor1.getOutputCurrent() > RobotMap.CURRENT_LIMIT) {
-      //this.rightMotor1.set(ControlMode.Current, RobotMap.CURRENT_LIMIT);
-    //}
+  }
+
+  public void stop(){
+    this.leftMotor1.set(ControlMode.PercentOutput, 0);
+    this.rightMotor2.set(ControlMode.PercentOutput, 0);
+  }
+
+  public void backwards(){
+    setLeftMotor(-RobotMap.MAX_SPEED_ADRIVE);
+    setRightMotor(RobotMap.MAX_SPEED_ADRIVE);
   }
 }
 
