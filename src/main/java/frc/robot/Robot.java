@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriverControls;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Grabber;
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
   public static Turret turret = new Turret();
   public static Grabber grabber = new Grabber();
   public static Shooter shooter = new Shooter();
+  public static Climber climber = new Climber();
   
   //public static Climber climber = new Climber();
   //public static Elevator elevator = new Elevator();

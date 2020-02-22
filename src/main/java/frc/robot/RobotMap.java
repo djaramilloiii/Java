@@ -58,22 +58,24 @@ public class RobotMap {
     RIGHT_MOTOR_1, //TalonFX CAN ID 1
     LEFT_MOTOR_1, //TalonFX CAN ID 2
     LEFT_MOTOR_2, //TalonFX CAN ID 3
-    CLIMB_MOTOR_1, //Talon FX CAN ID 4
+    GRAB_MOTOR_1, //VictorFX CAN ID 4
     ELEV_LIFT_1, //VictorSPX CAN ID 5
     ELEV_LIFT_2, //VivtorSPX CAN ID 6
     SHOOT_MOTOR_1, //VictorSPX CAN ID 7
-    GRAB_MOTOR_1, //VictorSPX CAN ID 8
-    TURRET_MOTOR_1,; //CANSparkMax CAN ID 9
+    CLIMB_MOTOR_1,//VictorSPX CAN ID 8
+    CLIMB_MOTOR_2, //VictorSPX CAN ID 9
+    TURRET_MOTOR_1, //CANSparkMax CAN ID 10
     
 
   }
 
   public static final double MAX_SPEED = 0.95; // 0-1, max speed
-  public static final double MAX_SPEED_LIFT1 = .35; //0-1 max speed
-  public static final double MAX_SPEED_LIFT2 = .35; //0-1 max speed
-  public static final double MAX_SPEED_GRAB = .35; //0-1 max speed
+  public static final double MAX_SPEED_LIFT1 = .4; //0-1 max speed
+  public static final double MAX_SPEED_LIFT2 = .4; //0-1 max speed
+  public static final double MAX_SPEED_GRAB = .4; //0-1 max speed
   public static final double MAX_SPEED_TURRET = .5; //0-1 max speed
   public static final double MAX_SPEED_SHOOT = .95; //0-1 max speed
+  public static final double MAX_SPEED_CLIMB = .7; //0-1 max speed
   //public static final double RAMP_RATE = 0; //time in seconds for the motor to reach max speed
   public static final double TURNING_RATE = 0.7;
 }
