@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.GrabRun;
-import frc.robot.commands.LoadBall;
+//import frc.robot.commands.LoadBall;
+import frc.robot.commands.LoadBallTimed;
 import frc.robot.commands.UnloadBall;
 
 
@@ -96,7 +97,7 @@ public class OI {
 
 		//this.oButtonA.whenPressed(new SetElevator(RobotMap.ELEVATOR_LOW));
 		this.oButtonA.whileHeld(new UnloadBall()); 
-		this.oButtonX.whenPressed(new LoadBall()); 
+		this.oButtonX.whenPressed(new LoadBallTimed()); 
 		this.oButtonY.whileHeld(new GrabRun()); 
 		//this.oButtonB.whileHeld(new GrabRun(false));
 		//this.oButtonStart.whenPressed(new TurnToAngle(-45));

@@ -13,7 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.Utilities;
-import frc.robot.commands.ElevatorLift;
+import frc.robot.commands.Loader;
 
 /**
  * Add your docs here.
@@ -41,7 +41,7 @@ public class Elevator extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    super.setDefaultCommand(new ElevatorLift());
+    super.setDefaultCommand(new Loader());
   }
 
   public void setLiftMotor1(double motorSetting) {
@@ -52,5 +52,15 @@ public class Elevator extends Subsystem {
   public void setLiftMotor2(double motorSetting) {
     motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED_LIFT2);
     this.liftMotor2.set(ControlMode.PercentOutput, motorSetting); // 2 is following 1
+  }
+
+  public void stop(){
+    this.liftMotor1.set(ControlMode.PercentOutput, 0);
+    this.liftMotor2.set(ControlMode.PercentOutput, 0);
+  }
+
+  public void run(){
+    setLiftMotor1(RobotMap.MAX_SPEED_LIFT1);
+    setLiftMotor2(RobotMap.MAX_SPEED_LIFT2);
   }
 }

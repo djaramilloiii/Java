@@ -8,39 +8,42 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.RobotMap;
+//import frc.robot.RobotMap;
+//import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ElevatorLift extends Command {
-  public ElevatorLift() {
+public class LoadBallTimed extends Command {
+  public LoadBallTimed() {
     super.requires(Robot.elevator);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    setTimeout(.75);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.elevator.run();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double rightStick = Robot.m_oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y);
     
-      Robot.elevator.setLiftMotor1(+rightStick);
-      Robot.elevator.setLiftMotor2(-rightStick);
-  }
+      
+   
+}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.elevator.stop();
   }
 
   // Called when another command which requires one or more of the same
@@ -49,3 +52,5 @@ public class ElevatorLift extends Command {
   protected void interrupted() {
   }
 }
+
+ 
