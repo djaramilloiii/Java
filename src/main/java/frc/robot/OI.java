@@ -15,9 +15,10 @@ import frc.robot.commands.AutoDrive;
 import frc.robot.commands.GrabIn;
 import frc.robot.commands.GrabOut;
 //import frc.robot.commands.LoadBall;
-import frc.robot.commands.LoadBallTimed;
+//import frc.robot.commands.LoadBallTimed;
 //import frc.robot.commands.StopGrabber;
-import frc.robot.commands.UnloadBall;
+//import frc.robot.commands.UnloadBall;
+import frc.robot.subsystems.CenterAuto;
 
 
 /**
@@ -99,8 +100,8 @@ public class OI {
 		this.operatorController.setRumble(RumbleType.kLeftRumble, 0);
 
 		//this.oButtonA.whenPressed(new SetElevator(RobotMap.ELEVATOR_LOW));
-		this.oButtonA.whileHeld(new UnloadBall()); 
-		this.oButtonX.whenPressed(new LoadBallTimed()); 
+		//this.oButtonA.whileHeld(new UnloadBall()); 
+		//this.oButtonX.whenPressed(new LoadBallTimed()); 
 		//this.oButtonY.whileHeld(new GrabRun()); 
 		//this.oButtonB.whileHeld(new GrabRun(false));
 		//this.oButtonStart.whenPressed(new TurnToAngle(-45));
@@ -121,6 +122,6 @@ public class OI {
 		this.dButtonB.whileHeld(new GrabOut());
 		//this.dButtonY.whenPressed(new AutoDrive());
 		//this.dButtonBack.whenPressed(new ZeroClimber(Dart.FRONT));
-		this.dButtonStart.whenPressed(new AutoDrive());
+		this.dButtonStart.whenPressed(new CenterAuto());
 	}
 }

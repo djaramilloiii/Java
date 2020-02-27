@@ -79,4 +79,5 @@ public class RobotMap {
   public static final double MAX_SPEED_CLIMB = .6; //0-1 max speed
   public static final double RAMP_RATE = .3; //time in seconds for the motor to reach max speed
   public static final double TURNING_RATE = 0.3;
+  public static final double AUTODRIVE_LENGTH = 1; //time in seconds to drive robot in autodrive
 }

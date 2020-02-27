@@ -20,16 +20,16 @@ import frc.robot.subsystems.Grabber;
 import frc.robot.subsystems.Turret;
 import frc.robot.subsystems.Shooter;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.cscore.VideoMode;
+//import edu.wpi.cscore.UsbCamera;
+//import edu.wpi.cscore.VideoMode;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
+//import edu.wpi.cscore.CvSink;
+//import edu.wpi.cscore.CvSource;
 
-import org.opencv.core.Mat;
-import org.opencv.core.Scalar;
-import org.opencv.imgproc.Imgproc;
-import org.opencv.core.Point;
+//import org.opencv.core.Mat;
+//import org.opencv.core.Scalar;
+//import org.opencv.imgproc.Imgproc;
+//import org.opencv.core.Point;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,11 +47,6 @@ public class Robot extends TimedRobot {
   public static Shooter shooter = new Shooter();
   public static Climber climber = new Climber();
   
-  //public static Climber climber = new Climber();
-  //public static Elevator elevator = new Elevator();
-  //public static Sensors sensors = new Sensors();
-  //public static Claw claw;
-  //private static final Compressor comp = new Compressor(0);
   public static OI m_oi;
 
   Command m_autonomousCommand;
@@ -69,10 +64,10 @@ public class Robot extends TimedRobot {
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     
-    //CameraServer.getInstance().startAutomaticCapture();
-    Thread c = new CameraThread();
-    c.setDaemon(true);
-    c.start();
+    CameraServer.getInstance().startAutomaticCapture();
+    //Thread c = new CameraThread();
+    //c.setDaemon(true);
+    //c.start();
 
     this.initSmartDashboard();
   }
@@ -176,7 +171,7 @@ public class Robot extends TimedRobot {
   }
 
 }
-class CameraThread extends Thread {
+/*class CameraThread extends Thread {
 
   @Override
   public void run() {
@@ -204,4 +199,4 @@ class CameraThread extends Thread {
 
   }
 }
-
+*/

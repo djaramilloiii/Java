@@ -44,5 +44,12 @@ public class Shooter extends Subsystem {
     motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED_SHOOT);
     this.shootMotor1.set(ControlMode.PercentOutput, motorSetting); //
   }
-  
+
+  public void runShooter(){
+    setShootMotor1(RobotMap.MAX_SPEED_SHOOT);
+  }
+
+  public void stop(){
+    setShootMotor1(0);
+  }
 }
