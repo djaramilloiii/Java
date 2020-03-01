@@ -29,6 +29,8 @@ public class Climber extends Subsystem {
     this.climbMotor2 = new VictorSPX(RobotMap.MOTORS.CLIMB_MOTOR_2.ordinal());
     this.climbMotor2.follow(this.climbMotor1);
     this.climbMotor2.setInverted(false);
+    this.climbMotor1.configNeutralDeadband(0.07);
+    this.climbMotor2.configNeutralDeadband(0.07);
       
   }
 

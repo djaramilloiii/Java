@@ -26,6 +26,8 @@ public class Elevator extends Subsystem {
   
 
   public Elevator() {
+    this.liftMotor1.configNeutralDeadband(0.07);
+    this.liftMotor2.configNeutralDeadband(0.07);
       
   }
 
@@ -60,7 +62,7 @@ public class Elevator extends Subsystem {
   }
 
   public void run(){
-    setLiftMotor1(RobotMap.MAX_SPEED_LIFT1);
+    setLiftMotor1(-RobotMap.MAX_SPEED_LIFT1);
     setLiftMotor2(RobotMap.MAX_SPEED_LIFT2);
   }
 }

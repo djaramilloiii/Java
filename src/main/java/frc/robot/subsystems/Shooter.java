@@ -46,7 +46,7 @@ public class Shooter extends Subsystem {
   }
 
   public void runShooter(){
-    setShootMotor1(RobotMap.MAX_SPEED_SHOOT);
+    setShootMotor1(-RobotMap.MAX_SPEED_SHOOT);
   }
 
   public void stop(){

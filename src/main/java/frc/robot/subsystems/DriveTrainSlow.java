@@ -13,13 +13,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.Utilities;
-import frc.robot.commands.DriverControls;
+//import frc.robot.commands.LimeLightAim;
 import oi.limelightvision.limelight.frc.LimeLight;
 
 /**
  * An example subsystem. You can replace with me with your own subsystem.
  */
-public class DriveTrain extends Subsystem {
+public class DriveTrainSlow extends Subsystem {
 
   private final TalonFX leftMotor1 = new TalonFX(RobotMap.MOTORS.LEFT_MOTOR_1.ordinal()); // drive train motors
   private TalonFX leftMotor2 = null;
@@ -38,7 +38,7 @@ public class DriveTrain extends Subsystem {
   // private int leftOffset = 0;
   // private int rightOffset = 0;
 
-  public DriveTrain() {
+  public DriveTrainSlow() {
     _limelight = new LimeLight();
 
     if (Robot.jankMode) {
@@ -73,11 +73,11 @@ public class DriveTrain extends Subsystem {
   protected void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    super.setDefaultCommand(new DriverControls());
+    
   }
 
   public void setLeftMotor(double motorSetting) {
-    motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED);
+    motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED_SLOW);
     this.leftMotor1.set(ControlMode.PercentOutput, motorSetting); // 2 is following 1
 
     // check current and ensure safe limit //if (this.leftMotor1.getOutputCurrent()
@@ -87,7 +87,7 @@ public class DriveTrain extends Subsystem {
   }
 
   public void setRightMotor(double motorSetting) {
-    motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED);
+    motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED_SLOW);
     this.rightMotor1.set(ControlMode.PercentOutput, motorSetting); // 2 is following 1
 
   }

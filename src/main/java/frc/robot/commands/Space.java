@@ -8,30 +8,29 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
 
-public class TimedShoot extends Command {
-  public TimedShoot() {
-    super.requires(Robot.shooter);
+public class Space extends Command {
+  private double length;
+
+  public Space(double x) {
+    length = x;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    setTimeout(4);
+    setTimeout(length);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.shooter.runShooter();
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
-    
-      
+  protected void execute() { 
    
-}
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -42,7 +41,7 @@ public class TimedShoot extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.shooter.stop();
+    
   }
 
   // Called when another command which requires one or more of the same

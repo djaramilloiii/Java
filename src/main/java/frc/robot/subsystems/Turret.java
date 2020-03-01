@@ -7,12 +7,14 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 //import com.ctre.phoenix.motorcontrol.ControlMode;
 //import com.ctre.phoenix.motorcontrol.can.TalonFX;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+//import com.revrobotics.CANSparkMax;
+//import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-//import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.Utilities;
@@ -22,14 +24,14 @@ import frc.robot.commands.TurretControl;
 public class Turret extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final CANSparkMax turretMotor1 = new CANSparkMax(RobotMap.MOTORS.TURRET_MOTOR_1.ordinal(), MotorType.kBrushed);
+  private final VictorSPX turretMotor1 = new VictorSPX(RobotMap.MOTORS.TURRET_MOTOR_1.ordinal());
   
 
   public Turret() {
 
   }
 
-  public CANSparkMax getTurretMotor1() {
+  public VictorSPX getTurretMotor1() {
     return turretMotor1;
   }
 
@@ -44,7 +46,7 @@ public class Turret extends Subsystem {
 
   public void setTurretMotor1(double motorSetting) {
     motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED_TURRET);
-    this.turretMotor1.set(motorSetting); //
+    this.turretMotor1.set(ControlMode.PercentOutput,motorSetting); //
   }
 }
 

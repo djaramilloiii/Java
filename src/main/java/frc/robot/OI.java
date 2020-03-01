@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.AutoDrive;
+//import frc.robot.commands.AutoDrive;
 import frc.robot.commands.GrabIn;
 import frc.robot.commands.GrabOut;
+import frc.robot.commands.LimeLightAim;
+import frc.robot.commands.ServoPin;
 //import frc.robot.commands.LoadBall;
 //import frc.robot.commands.LoadBallTimed;
 //import frc.robot.commands.StopGrabber;
@@ -100,10 +102,10 @@ public class OI {
 		this.operatorController.setRumble(RumbleType.kLeftRumble, 0);
 
 		//this.oButtonA.whenPressed(new SetElevator(RobotMap.ELEVATOR_LOW));
-		//this.oButtonA.whileHeld(new UnloadBall()); 
+		this.oButtonA.whenPressed(new GrabIn()); 
 		//this.oButtonX.whenPressed(new LoadBallTimed()); 
 		//this.oButtonY.whileHeld(new GrabRun()); 
-		//this.oButtonB.whileHeld(new GrabRun(false));
+		this.oButtonB.whileHeld(new GrabOut());
 		//this.oButtonStart.whenPressed(new TurnToAngle(-45));
 		//this.oButtonStart.whenPressed(new SetLight(true));
 		//this.oButtonBack.whenPressed(new SetLight(false));
@@ -117,10 +119,10 @@ public class OI {
 
 		//this.dButtonA.whenPressed(new GoToStrip());
 		//this.dButtonX.whenPressed(new DriveForward(30));
-		this.dButtonA.whenPressed(new GrabIn());
+		//this.dButtonA.whenPressed(new GrabIn());
 		//this.dButtonX.whenPressed(new SetBackClimber(RobotMap.CLIMBER_GROUND, RobotMap.CLIMBER_GROUND_SLOT));
-		this.dButtonB.whileHeld(new GrabOut());
-		//this.dButtonY.whenPressed(new AutoDrive());
+		this.dButtonB.whenPressed(new ServoPin(150));
+		this.dButtonY.whileHeld(new LimeLightAim());
 		//this.dButtonBack.whenPressed(new ZeroClimber(Dart.FRONT));
 		this.dButtonStart.whenPressed(new CenterAuto());
 	}

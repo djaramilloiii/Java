@@ -17,7 +17,7 @@ public class LoadBallTimed extends Command {
     super.requires(Robot.elevator);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    setTimeout(3);
+    setTimeout(4);
   }
 
   // Called just before this Command runs the first time

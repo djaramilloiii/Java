@@ -11,14 +11,19 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.RobotMap;
 import frc.robot.commands.AutoDrive;
+import frc.robot.commands.LimeLightAim;
 import frc.robot.commands.LoadBallTimed;
 import frc.robot.commands.RevShooter;
 import frc.robot.commands.Space;
 import frc.robot.commands.TimedShoot;
 
-public class CenterAuto extends CommandGroup {
+public class RightAuto extends CommandGroup {
    
-  public CenterAuto() {
+  public RightAuto() {
+    double timeout;
+    timeout = .25;
+    addSequential(new LimeLightAim(), timeout);
+    addSequential(new LimeLightAim(), timeout);
     addSequential(new RevShooter());
     addParallel(new TimedShoot());
     addSequential(new LoadBallTimed());

@@ -16,7 +16,7 @@ public class RevShooter extends Command {
     super.requires(Robot.shooter);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    setTimeout(1.5);
+    setTimeout(1);
   }
 
   // Called just before this Command runs the first time

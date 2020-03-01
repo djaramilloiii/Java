@@ -64,15 +64,16 @@ public class RobotMap {
     SHOOT_MOTOR_1, //VictorSPX CAN ID 7
     CLIMB_MOTOR_1,//VictorSPX CAN ID 8
     CLIMB_MOTOR_2, //VictorSPX CAN ID 9
-    TURRET_MOTOR_1, //CANSparkMax CAN ID 10
+    TURRET_MOTOR_1, //VictorSPX CAN ID 10
     
 
   }
 
   public static final double MAX_SPEED = 0.95; // 0-1, max speed
+  public static final double MAX_SPEED_SLOW = 0.55; // 0-1, max speed
   public static final double MAX_SPEED_ADRIVE = 0.2; // 0-1, max speed
-  public static final double MAX_SPEED_LIFT1 = .4; //0-1 max speed
-  public static final double MAX_SPEED_LIFT2 = .4; //0-1 max speed
+  public static final double MAX_SPEED_LIFT1 = .9; //0-1 max speed
+  public static final double MAX_SPEED_LIFT2 = .7; //0-1 max speed
   public static final double MAX_SPEED_GRAB = .6; //0-1 max speed
   public static final double MAX_SPEED_TURRET = .5; //0-1 max speed
   public static final double MAX_SPEED_SHOOT = .95; //0-1 max speed

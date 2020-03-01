@@ -10,39 +10,51 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+public class LimeLightAim extends Command {
+  private double kpAim = 0.05;
+    private double kpDistance = 0.05;
+    private double m_moveValue;
+    private double m_rotateValue;
 
-public class TimedShoot extends Command {
-  public TimedShoot() {
-    super.requires(Robot.shooter);
+  public LimeLightAim() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    setTimeout(4);
+    requires(Robot.driveTrainSlow);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.shooter.runShooter();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
-      
-   
-}
+    double tx = Robot.driveTrain.gLimeLight().getdegRotationToTarget();
+      double ty = Robot.driveTrain.gLimeLight().getdegVerticalToTarget();
+      boolean targetFound = Robot.driveTrain.gLimeLight().getIsTargetFound();
+  
+      if(targetFound){
+        m_moveValue = ty * kpDistance;
+        m_rotateValue = tx * kpAim;
+      }else{
+        m_moveValue = 0;
+        m_rotateValue = 0;
+      }
+      Robot.driveTrainSlow.setLeftMotor(m_moveValue + m_rotateValue);
+      Robot.driveTrainSlow.setRightMotor(-m_moveValue + m_rotateValue);
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isTimedOut();
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.shooter.stop();
+    Robot.driveTrainSlow.stop();
   }
 
   // Called when another command which requires one or more of the same
@@ -50,4 +62,11 @@ public class TimedShoot extends Command {
   @Override
   protected void interrupted() {
   }
+
+ /* private double Estimated_Distance(double a2){
+    double h1 = 6.0;
+    double h2 = 36.0;
+    double a1 = 0.0;
+    return (h2-h1)/Math.tan(a1+a2);
+  }*/
 }

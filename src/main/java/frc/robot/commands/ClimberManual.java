@@ -26,10 +26,10 @@ public class ClimberManual extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double leftStick = Robot.m_oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y);
+    double rightStick = Robot.m_oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y);
     
-      Robot.climber.setClimbMotor1(+leftStick);
-      Robot.climber.setClimbMotor2(-leftStick);
+      Robot.climber.setClimbMotor1(+rightStick);
+      Robot.climber.setClimbMotor2(-rightStick);
   }
 
   // Make this return true when this Command no longer needs to run execute()

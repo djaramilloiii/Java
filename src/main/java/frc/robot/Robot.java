@@ -12,9 +12,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.DriverControls;
+import frc.robot.commands.AutoDrive;
+//import frc.robot.commands.DriverControls;
+import frc.robot.subsystems.CenterAuto;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.DriveTrainSlow;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Grabber;
 import frc.robot.subsystems.Turret;
@@ -42,6 +45,7 @@ public class Robot extends TimedRobot {
   public static boolean jankMode = false;
   public static Elevator elevator = new Elevator();
   public static DriveTrain driveTrain = new DriveTrain();
+  public static DriveTrainSlow driveTrainSlow = new DriveTrainSlow();
   public static Turret turret = new Turret();
   public static Grabber grabber = new Grabber();
   public static Shooter shooter = new Shooter();
@@ -60,8 +64,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     //Robot.comp.setClosedLoopControl(true);
-    m_chooser.setDefaultOption("Default Auto", new DriverControls());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+    m_chooser.setDefaultOption("Center Auto", new CenterAuto());
+    m_chooser.addOption("My Auto", new AutoDrive(2));
     SmartDashboard.putData("Auto mode", m_chooser);
     
     CameraServer.getInstance().startAutomaticCapture();
@@ -141,6 +145,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    this.updateSmartDashboard();
     Scheduler.getInstance().run();
   }
 
