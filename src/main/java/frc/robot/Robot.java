@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.AutoDrive;
+//import frc.robot.commands.AutoDrive;
 //import frc.robot.commands.DriverControls;
 import frc.robot.subsystems.CenterAuto;
 import frc.robot.subsystems.Climber;
@@ -20,6 +20,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.DriveTrainSlow;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Grabber;
+import frc.robot.subsystems.RightAuto;
 import frc.robot.subsystems.Turret;
 import frc.robot.subsystems.Shooter;
 
@@ -65,7 +66,7 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     //Robot.comp.setClosedLoopControl(true);
     m_chooser.setDefaultOption("Center Auto", new CenterAuto());
-    m_chooser.addOption("My Auto", new AutoDrive(2));
+    m_chooser.addOption("Right Auto", new RightAuto());
     SmartDashboard.putData("Auto mode", m_chooser);
     
     CameraServer.getInstance().startAutomaticCapture();
