@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ServoPin extends Command {
-  public Servo servo = new Servo(9);
+  public static Servo servo = new Servo(9);
   double angle;
 	
 	/**

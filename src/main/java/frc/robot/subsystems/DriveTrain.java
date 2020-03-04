@@ -21,22 +21,25 @@ import oi.limelightvision.limelight.frc.LimeLight;
  */
 public class DriveTrain extends Subsystem {
 
-  private final TalonFX leftMotor1 = new TalonFX(RobotMap.MOTORS.LEFT_MOTOR_1.ordinal()); // drive train motors
+  public final static TalonFX leftMotor1 = new TalonFX(RobotMap.MOTORS.LEFT_MOTOR_1.ordinal()); // drive train motors
   private TalonFX leftMotor2 = null;
   //private PWMSparkMax leftMotor3 = null;
-  private final TalonFX rightMotor1 = new TalonFX(RobotMap.MOTORS.RIGHT_MOTOR_1.ordinal());
+  public final static TalonFX rightMotor1 = new TalonFX(RobotMap.MOTORS.RIGHT_MOTOR_1.ordinal());
   private  TalonFX rightMotor2 = null;
   //private  PWMSparkMax rightMotor3 = null;
-  public int selSenPos = leftMotor1.getSelectedSensorPosition();
+  public int selSenPosLeft = leftMotor1.getSelectedSensorPosition();
+  public int selSenPosRight = rightMotor1.getSelectedSensorPosition();
+  
   private final LimeLight _limelight;
- 
+
 
   // private final double distancePerPulse = (2.0 * RobotMap.WHEEL_DIAMETER *
   // RobotMap.ENCODER_GEAR_RATIO) /
   // (RobotMap.ENCODER_PULSES_PER_REVOLUTION);
 
-  // private int leftOffset = 0;
-  // private int rightOffset = 0;
+   private int leftOffset = 0;
+   private int rightOffset = 0;
+   private final double kDriveTick2Feet = 1.0 / 1020 * 6 * Math.PI / 12;
 
   public DriveTrain() {
     _limelight = new LimeLight();
@@ -45,28 +48,31 @@ public class DriveTrain extends Subsystem {
 
       this.leftMotor2 = new TalonFX(RobotMap.MOTORS.LEFT_MOTOR_2.ordinal());
       this.rightMotor2 = new TalonFX(RobotMap.MOTORS.RIGHT_MOTOR_2.ordinal());
-      this.leftMotor2.follow(this.leftMotor1);
-      this.rightMotor2.follow(this.rightMotor1);
+      this.leftMotor2.follow(DriveTrain.leftMotor1);
+      this.rightMotor2.follow(DriveTrain.rightMotor1);
       this.rightMotor2.setInverted(false);
       this.leftMotor2.setInverted(false);
     } else {
       this.leftMotor2 = new TalonFX(RobotMap.MOTORS.LEFT_MOTOR_2.ordinal());
       this.rightMotor2 = new TalonFX(RobotMap.MOTORS.RIGHT_MOTOR_2.ordinal());
-      this.leftMotor2.follow(this.leftMotor1);
-      this.rightMotor2.follow(this.rightMotor1);
+      this.leftMotor2.follow(DriveTrain.leftMotor1);
+      this.rightMotor2.follow(DriveTrain.rightMotor1);
       this.rightMotor2.setInverted(false);
       this.leftMotor2.setInverted(false);
     }
+    
 
-    this.leftMotor1.configOpenloopRamp(RobotMap.RAMP_RATE, 0);
-    this.rightMotor1.configOpenloopRamp(RobotMap.RAMP_RATE, 0);
+    DriveTrain.leftMotor1.configOpenloopRamp(RobotMap.RAMP_RATE, 0);
+    DriveTrain.rightMotor1.configOpenloopRamp(RobotMap.RAMP_RATE, 0);
 
-    this.rightMotor1.configNeutralDeadband(0.07);
-    this.rightMotor2.configNeutralDeadband(0.07);
-    this.leftMotor1.configNeutralDeadband(0.07);
-    this.leftMotor2.configNeutralDeadband(0.07);
+    DriveTrain.rightMotor1.configNeutralDeadband(0.1);
+    this.rightMotor2.configNeutralDeadband(0.1);
+    DriveTrain.leftMotor1.configNeutralDeadband(0.1);
+    this.leftMotor2.configNeutralDeadband(0.1);
 
-  
+    DriveTrain.leftMotor1.setSensorPhase(true);
+    DriveTrain.rightMotor1.setSensorPhase(false);
+
   }
 
   @Override
@@ -78,7 +84,7 @@ public class DriveTrain extends Subsystem {
 
   public void setLeftMotor(double motorSetting) {
     motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED);
-    this.leftMotor1.set(ControlMode.PercentOutput, motorSetting); // 2 is following 1
+    DriveTrain.leftMotor1.set(ControlMode.PercentOutput, motorSetting); // 2 is following 1
 
     // check current and ensure safe limit //if (this.leftMotor1.getOutputCurrent()
     // > RobotMap.CURRENT_LIMIT) {
@@ -88,12 +94,12 @@ public class DriveTrain extends Subsystem {
 
   public void setRightMotor(double motorSetting) {
     motorSetting = Utilities.scale(motorSetting, RobotMap.MAX_SPEED);
-    this.rightMotor1.set(ControlMode.PercentOutput, motorSetting); // 2 is following 1
+    DriveTrain.rightMotor1.set(ControlMode.PercentOutput, motorSetting); // 2 is following 1
 
   }
 
   public void stop() {
-    this.leftMotor1.set(ControlMode.PercentOutput, 0);
+    DriveTrain.leftMotor1.set(ControlMode.PercentOutput, 0);
     this.rightMotor2.set(ControlMode.PercentOutput, 0);
   }
 
@@ -105,7 +111,22 @@ public class DriveTrain extends Subsystem {
   public LimeLight gLimeLight() {
     return _limelight;
   }
+  public double getDistance(){
+    return kDriveTick2Feet * (this.getLeftTicks() + this.getRightTicks()) / 2d; 
+  }
 
+  public int getLeftTicks(){
+    return DriveTrain.leftMotor1.getSelectedSensorPosition() - this.leftOffset;
+  }
+
+  public int getRightTicks(){
+    return DriveTrain.rightMotor1.getSelectedSensorPosition() - this.rightOffset;
+  }
+
+  public void resetEncoders(){
+    this.leftOffset = DriveTrain.leftMotor1.getSelectedSensorPosition();
+    this.rightOffset = DriveTrain.rightMotor1.getSelectedSensorPosition();
+  }
 
 }
 

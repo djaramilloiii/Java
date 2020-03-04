@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.ServoPin;
 //import frc.robot.commands.AutoDrive;
 //import frc.robot.commands.DriverControls;
 import frc.robot.subsystems.CenterAuto;
@@ -68,6 +69,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Center Auto", new CenterAuto());
     m_chooser.addOption("Right Auto", new RightAuto());
     SmartDashboard.putData("Auto mode", m_chooser);
+    //DriveTrain.this.leftMotor1.setSelectedSensorPosition(0);
     
     CameraServer.getInstance().startAutomaticCapture();
     //Thread c = new CameraThread();
@@ -78,11 +80,13 @@ public class Robot extends TimedRobot {
   }
 
   private void initSmartDashboard() {
-    SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPos);
+    SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPosLeft);
+    SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPosRight);
   }
 
   public void updateSmartDashboard(){
-    SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPos);
+    SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPosLeft);
+    SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPosRight);
   }
   /**
    * This function is called every robot packet, no matter the mode. Use this for
@@ -96,6 +100,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     this.updateSmartDashboard();
+    DriveTrain.leftMotor1.getSelectedSensorPosition();
+    DriveTrain.rightMotor1.getSelectedSensorPosition();
 
   }
 
@@ -106,6 +112,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    ServoPin.servo.setAngle(180);
   }
 
   @Override

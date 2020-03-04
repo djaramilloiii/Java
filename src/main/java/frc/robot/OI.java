@@ -121,7 +121,7 @@ public class OI {
 		//this.dButtonX.whenPressed(new DriveForward(30));
 		//this.dButtonA.whenPressed(new GrabIn());
 		//this.dButtonX.whenPressed(new SetBackClimber(RobotMap.CLIMBER_GROUND, RobotMap.CLIMBER_GROUND_SLOT));
-		this.dButtonB.whenPressed(new ServoPin(150));
+		this.dButtonB.whenPressed(new ServoPin(0));
 		this.dButtonY.whileHeld(new LimeLightAim());
 		//this.dButtonBack.whenPressed(new ZeroClimber(Dart.FRONT));
 		this.dButtonStart.whenPressed(new CenterAuto());

@@ -26,8 +26,8 @@ public class Elevator extends Subsystem {
   
 
   public Elevator() {
-    this.liftMotor1.configNeutralDeadband(0.07);
-    this.liftMotor2.configNeutralDeadband(0.07);
+    this.liftMotor1.configNeutralDeadband(0.1);
+    this.liftMotor2.configNeutralDeadband(0.1);
       
   }
 

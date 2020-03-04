@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 //import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.RobotMap;
+//import frc.robot.RobotMap;
 import frc.robot.commands.AutoDrive;
 import frc.robot.commands.LimeLightAim;
 import frc.robot.commands.LoadBallTimed;
@@ -21,14 +21,14 @@ public class RightAuto extends CommandGroup {
    
   public RightAuto() {
     double timeout;
-    timeout = .25;
+    timeout = .125;
     addSequential(new LimeLightAim(), timeout);
     addSequential(new LimeLightAim(), timeout);
     addSequential(new RevShooter());
     addParallel(new TimedShoot());
     addSequential(new LoadBallTimed());
     addSequential(new Space(3));
-    addSequential(new AutoDrive(RobotMap.AUTODRIVE_LENGTH));
+    addSequential(new AutoDrive(5, 5));
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
