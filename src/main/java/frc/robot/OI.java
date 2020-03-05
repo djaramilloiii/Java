@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 //import frc.robot.commands.AutoDrive;
+//import frc.robot.commands.AutoDrive;
 import frc.robot.commands.GrabIn;
 import frc.robot.commands.GrabOut;
 import frc.robot.commands.LimeLightAim;
@@ -20,7 +21,7 @@ import frc.robot.commands.ServoPin;
 //import frc.robot.commands.LoadBallTimed;
 //import frc.robot.commands.StopGrabber;
 //import frc.robot.commands.UnloadBall;
-import frc.robot.subsystems.CenterAuto;
+//import frc.robot.subsystems.CenterAuto;
 
 
 /**
@@ -124,6 +125,6 @@ public class OI {
 		this.dButtonB.whenPressed(new ServoPin(0));
 		this.dButtonY.whileHeld(new LimeLightAim());
 		//this.dButtonBack.whenPressed(new ZeroClimber(Dart.FRONT));
-		this.dButtonStart.whenPressed(new CenterAuto());
+		//this.dButtonStart.whenPressed(new AutoDrive(5,5));
 	}
 }

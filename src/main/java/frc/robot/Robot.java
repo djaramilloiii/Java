@@ -69,7 +69,8 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Center Auto", new CenterAuto());
     m_chooser.addOption("Right Auto", new RightAuto());
     SmartDashboard.putData("Auto mode", m_chooser);
-    //DriveTrain.this.leftMotor1.setSelectedSensorPosition(0);
+    DriveTrain.leftMotor1.setSelectedSensorPosition(0);
+    DriveTrain.rightMotor1.setSelectedSensorPosition(0);
     
     CameraServer.getInstance().startAutomaticCapture();
     //Thread c = new CameraThread();

@@ -14,10 +14,10 @@ import frc.robot.subsystems.DriveTrain;
 
 public class AutoDrive extends Command {
   //private double length;
-  private final double kDriveTick2Feet = 1.0 / 1020 * 6 * Math.PI / 12;
+  private final double kDriveTick2Feet = 1.0 / 2048 * 6 * Math.PI / 12;
   double leftLength = 0;
   double rightLength = 0;
-  final double kP = 0.2;
+  final double kP = 0.05;
 
   public AutoDrive(double x, double y) {
     
@@ -51,7 +51,7 @@ public class AutoDrive extends Command {
     double outputSpeedRight = kP * errorRight;
 
     Robot.driveTrain.setLeftMotor(outputSpeedLeft);
-    Robot.driveTrain.setRightMotor(outputSpeedRight);
+    Robot.driveTrain.setRightMotor(-outputSpeedRight);
     
       
    
