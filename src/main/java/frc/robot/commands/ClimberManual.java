@@ -36,10 +36,10 @@ public class ClimberManual extends Command {
   protected void execute() {
     double rightStick = Robot.m_oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y);
 
-       // if (forwardLimitSwitch.get()) // If the forward limit switch is pressed, we want to keep the values between -1 and 0
-         //   rightStick = Math.min(rightStick, 0);
-        //else if(reverseLimitSwitch.get()) // If the reversed limit switch is pressed, we want to keep the values between 0 and 1
-          //  rightStick = Math.max(rightStick, 0);
+       if (forwardLimitSwitch.get()) // If the forward limit switch is pressed, we want to keep the values between -1 and 0
+            rightStick = Math.min(rightStick, 0);
+        else if(reverseLimitSwitch.get()) // If the reversed limit switch is pressed, we want to keep the values between 0 and 1
+            rightStick = Math.max(rightStick, 0);
         
       Robot.climber.setClimbMotor1(+rightStick);
       Robot.climber.setClimbMotor2(-rightStick);
