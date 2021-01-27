@@ -23,7 +23,9 @@ public class CenterAuto extends CommandGroup {
     addParallel(new TimedShoot());
     addSequential(new LoadBallTimed());
     addSequential(new Space(3));
-    addSequential(new AutoDrive(5, 5));
+    addSequential(new AutoDrive(-.35, -.35, 2.25));
+    //addSequential(new Space(3));
+    addSequential(new AutoDrive(-.35, .35, 1.18));
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

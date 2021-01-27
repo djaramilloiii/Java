@@ -108,6 +108,11 @@ public class DriveTrain extends Subsystem {
     setRightMotor(-RobotMap.MAX_SPEED_ADRIVE);
   }
 
+  public void spinbot() {
+    setLeftMotor(RobotMap.MAX_SPEED_ADRIVE);
+    setRightMotor(RobotMap.MAX_SPEED_ADRIVE);
+  }
+
   public LimeLight gLimeLight() {
     return _limelight;
   }

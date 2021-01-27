@@ -22,6 +22,8 @@ import frc.robot.commands.ServoPin;
 //import frc.robot.commands.StopGrabber;
 //import frc.robot.commands.UnloadBall;
 //import frc.robot.subsystems.CenterAuto;
+import frc.robot.commands.TurretControl;
+import frc.robot.commands.TurretControlReverse;
 
 
 /**
@@ -57,7 +59,7 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
   XboxController driverController = new XboxController(RobotMap.DRIVER_CONTROLLER);
-	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
+  public static XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
 	Button dButtonA = new JoystickButton(this.driverController, RobotMap.BUTTON_A);
 	Button dButtonB = new JoystickButton(this.driverController, RobotMap.BUTTON_B);
@@ -66,18 +68,18 @@ public class OI {
 	Button dButtonBack = new JoystickButton(this.driverController, RobotMap.BACK_BUTTON);
 	Button dButtonStart = new JoystickButton(this.driverController, RobotMap.START_BUTTON);
 	
-	Button oButtonA = new JoystickButton(this.operatorController, RobotMap.BUTTON_A);
-	Button oButtonB = new JoystickButton(this.operatorController, RobotMap.BUTTON_B);
-	Button oButtonY = new JoystickButton(this.operatorController, RobotMap.BUTTON_Y);
-	Button oButtonX = new JoystickButton(this.operatorController, RobotMap.BUTTON_X);
-	Button oButtonBack = new JoystickButton(this.operatorController, RobotMap.BACK_BUTTON);
-	Button oButtonStart = new JoystickButton(this.operatorController, RobotMap.START_BUTTON);
-  	Button oButtonRightStick = new JoystickButton(this.operatorController, RobotMap.RIGHT_STICK_BUTTON);
-	Button oButtonRightBumper = new JoystickButton(this.operatorController, RobotMap.RIGHT_BUMPER);
-	Button oButtonLeftBumper = new JoystickButton(this.operatorController, RobotMap.LEFT_BUMPER);
+	Button oButtonA = new JoystickButton(OI.operatorController, RobotMap.BUTTON_A);
+	Button oButtonB = new JoystickButton(OI.operatorController, RobotMap.BUTTON_B);
+	Button oButtonY = new JoystickButton(OI.operatorController, RobotMap.BUTTON_Y);
+	Button oButtonX = new JoystickButton(OI.operatorController, RobotMap.BUTTON_X);
+	Button oButtonBack = new JoystickButton(OI.operatorController, RobotMap.BACK_BUTTON);
+	Button oButtonStart = new JoystickButton(OI.operatorController, RobotMap.START_BUTTON);
+  	Button oButtonRightStick = new JoystickButton(OI.operatorController, RobotMap.RIGHT_STICK_BUTTON);
+	Button oButtonRightBumper = new JoystickButton(OI.operatorController, RobotMap.RIGHT_BUMPER);
+	Button oButtonLeftBumper = new JoystickButton(OI.operatorController, RobotMap.LEFT_BUMPER);
 
   	public boolean getOperatorButton(int axis) {
-		return this.operatorController.getRawButton(axis);
+		return OI.operatorController.getRawButton(axis);
 	}
 	
 	public boolean getDriverButton(int axis) {
@@ -85,7 +87,7 @@ public class OI {
 	}
 	
 	public double getOperatorRawAxis(int axis) {
-		return this.operatorController.getRawAxis(axis);
+		return OI.operatorController.getRawAxis(axis);
 	}
 	
 	public double getDriverRawAxis(int axis) {
@@ -93,14 +95,14 @@ public class OI {
 	}
 	
 	public int getOperatorPOV(){
-		return this.operatorController.getPOV();
+		return OI.operatorController.getPOV();
 	}
 
 	public OI () {
 		this.driverController.setRumble(RumbleType.kRightRumble, 0);
 		this.driverController.setRumble(RumbleType.kLeftRumble, 0);
-		this.operatorController.setRumble(RumbleType.kRightRumble, 0);
-		this.operatorController.setRumble(RumbleType.kLeftRumble, 0);
+		OI.operatorController.setRumble(RumbleType.kRightRumble, 0);
+		OI.operatorController.setRumble(RumbleType.kLeftRumble, 0);
 
 		//this.oButtonA.whenPressed(new SetElevator(RobotMap.ELEVATOR_LOW));
 		this.oButtonA.whenPressed(new GrabIn()); 
@@ -115,8 +117,8 @@ public class OI {
 		//this.oButtonStart.whileHeld(new IncrementElevator(RobotMap.ELEVATOR_INCREMENT));
 		//this.oButtonBack.whenPressed(new SetElevatorSmartDashboard());
 
-		//this.oButtonLeftBumper.whenPressed(new ToggleClaw());
-		//this.oButtonRightBumper.whenPressed(new ToggleClaw());
+		this.oButtonLeftBumper.whileHeld(new TurretControl());
+		this.oButtonRightBumper.whileHeld(new TurretControlReverse());
 
 		//this.dButtonA.whenPressed(new GoToStrip());
 		//this.dButtonX.whenPressed(new DriveForward(30));

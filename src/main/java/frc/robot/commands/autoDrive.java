@@ -10,31 +10,32 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 //import frc.robot.RobotMap;
-import frc.robot.subsystems.DriveTrain;
+//import frc.robot.subsystems.DriveTrain;
 
 public class AutoDrive extends Command {
-  //private double length;
-  private final double kDriveTick2Feet = 1.0 / 2048 * 6 * Math.PI / 12;
+  private double length;
+  //private final double kDriveTick2Feet = 1.0 / 2048 * 6 * Math.PI / 12;
   double leftLength = 0;
   double rightLength = 0;
-  final double kP = 0.05;
+  //final double kP = 0.05;
 
-  public AutoDrive(double x, double y) {
-    
+  public AutoDrive(double x, double y, double z) {
+    length = z;
     rightLength = x;  
     leftLength = y;
     super.requires(Robot.driveTrain);
      /* // Use requires() here to declare subsystem dependencies // eg.
-     * requires(chassis); setTimeout(length);
-     */
+     * requires(chassis); */
+     setTimeout(length);
+     
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     
-    DriveTrain.leftMotor1.setSelectedSensorPosition(0);
-    DriveTrain.rightMotor1.setSelectedSensorPosition(0);
+    //DriveTrain.leftMotor1.setSelectedSensorPosition(0);
+    //DriveTrain.rightMotor1.setSelectedSensorPosition(0);
     //Robot.driveTrain.backwards();
 
   }
@@ -44,14 +45,14 @@ public class AutoDrive extends Command {
   protected void execute() {
     //setpoint = 10;
 
-    double sensorPosition = DriveTrain.leftMotor1.getSelectedSensorPosition() * kDriveTick2Feet;
+    /*double sensorPosition = DriveTrain.leftMotor1.getSelectedSensorPosition() * kDriveTick2Feet;
     double errorLeft = leftLength - sensorPosition;
     double errorRight = rightLength - sensorPosition;
     double outputSpeedLeft = kP * errorLeft;
-    double outputSpeedRight = kP * errorRight;
+    double outputSpeedRight = kP * errorRight;*/
 
-    Robot.driveTrain.setLeftMotor(outputSpeedLeft);
-    Robot.driveTrain.setRightMotor(-outputSpeedRight);
+    Robot.driveTrain.setLeftMotor(leftLength);
+    Robot.driveTrain.setRightMotor(-rightLength);
     
       
    

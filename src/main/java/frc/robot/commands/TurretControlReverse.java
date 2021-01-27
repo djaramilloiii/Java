@@ -11,11 +11,12 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TurretControl extends Command {
-  public TurretControl() {
+public class TurretControlReverse extends Command {
+  public TurretControlReverse() {
     super.requires(Robot.turret);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+
   }
 
   // Called just before this Command runs the first time
@@ -26,8 +27,8 @@ public class TurretControl extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
-    Robot.turret.setTurretMotor1(RobotMap.MAX_SPEED_TURRET);
+  
+    Robot.turret.setTurretMotor1(-RobotMap.MAX_SPEED_TURRET);
   
   }
 

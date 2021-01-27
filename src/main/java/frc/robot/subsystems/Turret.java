@@ -18,7 +18,8 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.Utilities;
-import frc.robot.commands.TurretControl;
+import frc.robot.commands.StopTurret;
+//import frc.robot.commands.TurretControl;
 
 
 public class Turret extends Subsystem {
@@ -41,7 +42,7 @@ public class Turret extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    super.setDefaultCommand(new TurretControl());
+    super.setDefaultCommand(new StopTurret());
   }
 
   public void setTurretMotor1(double motorSetting) {

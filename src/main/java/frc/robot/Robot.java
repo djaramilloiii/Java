@@ -23,6 +23,7 @@ import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Grabber;
 import frc.robot.subsystems.RightAuto;
 import frc.robot.subsystems.Turret;
+//import oi.limelightvision.limelight.frc.LimeLight;
 import frc.robot.subsystems.Shooter;
 
 //import edu.wpi.cscore.UsbCamera;
@@ -52,30 +53,30 @@ public class Robot extends TimedRobot {
   public static Grabber grabber = new Grabber();
   public static Shooter shooter = new Shooter();
   public static Climber climber = new Climber();
-  
+
   public static OI m_oi;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
+   * This function is run when the robot is first started up and should be used
+   * for any initialization code.
    */
   @Override
   public void robotInit() {
     m_oi = new OI();
-    //Robot.comp.setClosedLoopControl(true);
+    // Robot.comp.setClosedLoopControl(true);
     m_chooser.setDefaultOption("Center Auto", new CenterAuto());
     m_chooser.addOption("Right Auto", new RightAuto());
     SmartDashboard.putData("Auto mode", m_chooser);
     DriveTrain.leftMotor1.setSelectedSensorPosition(0);
     DriveTrain.rightMotor1.setSelectedSensorPosition(0);
-    
+
     CameraServer.getInstance().startAutomaticCapture();
-    //Thread c = new CameraThread();
-    //c.setDaemon(true);
-    //c.start();
+    // Thread c = new CameraThread();
+    // c.setDaemon(true);
+    // c.start();
 
     this.initSmartDashboard();
   }
@@ -83,12 +84,15 @@ public class Robot extends TimedRobot {
   private void initSmartDashboard() {
     SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPosLeft);
     SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPosRight);
+    //SmartDashboard.putNumber("Climber Distance", Robot.climber.ClimberManual.currentDistance);
+    
   }
 
-  public void updateSmartDashboard(){
+  public void updateSmartDashboard() {
     SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPosLeft);
     SmartDashboard.putNumber("selSenPos", Robot.driveTrain.selSenPosRight);
   }
+
   /**
    * This function is called every robot packet, no matter the mode. Use this for
    * items like diagnostics that you want ran during disabled, autonomous,
@@ -114,11 +118,13 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledInit() {
     ServoPin.servo.setAngle(180);
+    //LimeLight.setLEDMode(ControlMode.1);
   }
 
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+
   }
 
   /**
